@@ -187,6 +187,26 @@ button {
   font-weight: 300;
 }
 
+/* ========== 响应式：手机端铺满屏幕（<431px） ========== */
+@media (max-width: 430px) {
+  body {
+    display: block;       /* 去掉 grid 居中 */
+    min-height: 100svh;
+  }
+  .phone {
+    width: 100vw;         /* 铺满屏幕宽度 */
+    min-height: 100svh;
+    border-radius: 0;     /* 去掉圆角 */
+    box-shadow: none;     /* 去掉阴影 */
+  }
+  .status {
+    display: none;        /* 隐藏假状态栏，真手机有自己的 */
+  }
+  .topbar {
+    padding-top: env(safe-area-inset-top); /* 用真手机的安全区域 */
+  }
+}
+
 /* ========== 响应式：大屏（>=431px）模拟手机外壳 ========== */
 @media (min-width: 431px) {
   .phone {

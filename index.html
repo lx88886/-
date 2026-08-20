@@ -3,22 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>红包心意 · 750px还原稿</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>红包心意</title>
+    <link rel="stylesheet" href="styles.css?v=20260820" />
   </head>
   <body>
-    <main class="artboard" aria-label="红包心意">
-      <header class="status"><strong>22:59</strong><span class="brand">◆ Bitget Wallet</span><span class="signal">▮▮▮　⌁　36</span></header>
-      <nav><span class="back">‹</span><span class="nav-right">?　☰</span></nav>
-      <section class="title"><h1>红包心意</h1><p>惊喜秒达，好友 0 门槛领</p></section>
-      <div class="pattern" aria-hidden="true"></div>
-      <img class="hero" src="assets/illustrations/illustration-hero-red-packet-01.png" alt="骑马捧元宝的新春红包插画" />
-      <div class="shadow" aria-hidden="true"></div>
+    <main class="phone" aria-label="红包心意">
+      <!-- 第1行：状态栏 + 导航 -->
+      <header class="topbar">
+        <div class="status"><strong>22:59</strong><span class="brand">◆ Bitget Wallet</span><span class="signal">▮▮▮　⌁　36</span></div>
+        <nav class="nav"><span class="back">‹</span><span class="nav-right">?　☰</span></nav>
+      </header>
+      <!-- 第2行：标题 -->
+      <section class="intro">
+        <h1>红包心意</h1>
+        <p>惊喜秒达，好友 0 门槛领</p>
+      </section>
+      <!-- 第3行：Hero 插图区 -->
+      <section class="hero">
+        <div class="pattern" aria-hidden="true"></div>
+        <img class="hero-img" src="assets/illustrations/illustration-hero-red-packet-01.png" alt="骑马捧元宝的新春红包插画" />
+        <div class="hero-shadow" aria-hidden="true"></div>
+      </section>
+      <!-- 第4行：按钮区 -->
       <section class="actions">
         <button class="card" onclick="location.href='send.html'"><img src="assets/icons/icon-action-send-01.png" alt="" /><strong>发送红包</strong><i>›</i></button>
         <button class="card" onclick="location.href='receive-code.html'"><img src="assets/icons/icon-action-receive-01.png" alt="" /><strong>领取红包</strong><i>›</i></button>
       </section>
     </main>
-    <script src="responsive.js"></script>
   </body>
 </html>

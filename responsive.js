@@ -26,4 +26,3 @@
   window.addEventListener('resize', fitMobileBoard, { passive: true });
   window.visualViewport?.addEventListener('resize', fitMobileBoard, { passive: true });
 })();
-

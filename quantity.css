@@ -1,1 +1,126 @@
-:root{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:#062b34}*{box-sizing:border-box}body{margin:0;display:grid;place-items:start center;background:#fff}.screen{position:relative;width:750px;height:1626px;overflow:hidden;background:linear-gradient(#cff3eb 0,#fff 35%)}header{position:absolute;top:28px;left:82px;width:586px;display:flex;align-items:center;justify-content:space-between;color:#050c10;font-size:26px;z-index:2}header a{position:absolute;top:72px;left:-42px;color:#092a31;text-decoration:none;font:80px/1 Arial}header span{font-weight:800;font-size:34px}header b{font-size:20px}header i{font-style:normal;font-size:18px;font-weight:800}.selected-cover{position:absolute;top:171px;left:0;width:750px;height:593px;object-fit:cover}h1{position:absolute;top:792px;width:100%;margin:0;text-align:center;font-size:54px;letter-spacing:5px}output{position:absolute;top:894px;left:318px;width:114px;height:70px;border:2px solid #ff3a86;border-radius:22px;background:#fff5fa;text-align:center;font:42px/66px Arial;color:#a7b1b4}.pad{position:absolute;top:1028px;left:80px;width:590px;display:grid;grid-template-columns:repeat(3,1fr);row-gap:38px;column-gap:80px}.pad button{height:64px;border:0;background:transparent;color:#062b34;font:56px/1 Arial}.pad [data-delete]{font-size:46px}#confirm{position:absolute;left:35px;bottom:72px;width:680px;height:132px;border:0;border-radius:66px;background:#92edf3;color:#6c8589;font:32px "PingFang SC","Microsoft YaHei",sans-serif}#confirm:not(:disabled){background:#59dbe9;color:#062d35}@media(max-width:750px){.screen{transform:scale(calc(100vw / 750));transform-origin:top center;margin-bottom:calc(-1626px + 100vw * 1626 / 750)}}
+/* 红包个数 — CSS 原生响应式 */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #062b34;
+}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: #fff;
+}
+
+.phone {
+  position: relative;
+  width: min(100vw, 430px);
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #cff3eb 0%, #fff 35%);
+}
+
+/* 顶部状态栏 */
+.topbar {
+  padding: max(20px, env(safe-area-inset-top)) 24px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #050c10;
+  font-size: 14px;
+}
+.topbar .back { font: 40px/24px Arial; color: #092a31; text-decoration: none; }
+.topbar .time { font-weight: 800; font-size: 17px; margin-left: -8px; }
+.topbar .brand { font-size: 13px; font-weight: 800; margin-left: auto; }
+.topbar .signal { font-style: normal; font-size: 12px; font-weight: 800; }
+
+/* 已选封面图 */
+.selected-cover {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+/* 标题 */
+.page-title {
+  margin: 0;
+  padding: 16px 0 8px;
+  text-align: center;
+  font-size: 32px;
+  letter-spacing: 3px;
+  font-weight: 800;
+}
+
+/* 数量显示框 */
+.count-display {
+  margin: 8px auto;
+  width: 80px;
+  height: 50px;
+  border: 2px solid #ff3a86;
+  border-radius: 14px;
+  background: #fff5fa;
+  text-align: center;
+  font: 28px/46px Arial;
+  color: #a7b1b4;
+  display: block;
+}
+
+/* 数字键盘 */
+.pad {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 16px;
+  column-gap: 20px;
+  padding: 12px 30px;
+  align-content: center;
+}
+
+.pad button {
+  height: 50px;
+  border: 0;
+  background: transparent;
+  color: #062b34;
+  font: 36px/1 Arial;
+  cursor: pointer;
+}
+
+.pad [data-delete] { font-size: 30px; }
+
+/* 确认按钮 */
+.confirm-btn {
+  margin: 0 20px max(28px, env(safe-area-inset-bottom));
+  height: 64px;
+  border: 0;
+  border-radius: 32px;
+  background: #92edf3;
+  color: #6c8589;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.confirm-btn:not(:disabled) {
+  background: #59dbe9;
+  color: #062d35;
+}
+
+/* 响应式 */
+@media (min-width: 431px) {
+  .phone {
+    min-height: 820px;
+    max-height: 932px;
+    border-radius: 38px;
+    box-shadow: 0 24px 70px rgba(19, 41, 45, .26);
+  }
+}
+
+@media (max-height: 820px) {
+  .page-title { font-size: 28px; }
+  .selected-cover { max-height: 240px; }
+  .pad button { height: 44px; font-size: 30px; }
+  .confirm-btn { height: 56px; font-size: 18px; }
+}

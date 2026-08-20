@@ -1,1 +1,117 @@
-:root{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:#092a31}*{box-sizing:border-box}body{margin:0;background:#fff;display:grid;place-items:start center}.screen{position:relative;width:750px;height:1626px;overflow:hidden;background:linear-gradient(180deg,#f8d4d2 0,#fff 30%)}header{position:absolute;top:28px;left:82px;width:586px;display:flex;align-items:center;justify-content:space-between;color:#050c10;font-size:26px;z-index:2}header a{position:absolute;top:72px;left:-42px;color:#092a31;text-decoration:none;font:80px/1 Arial}header span{font-weight:800;font-size:34px}header b{font-size:20px}header i{font-style:normal;font-size:18px;font-weight:800}h1{position:absolute;top:224px;width:100%;margin:0;text-align:center;font-size:54px;letter-spacing:4px}.carousel{position:absolute;top:406px;left:0;width:750px;height:727px;overflow:hidden;touch-action:pan-y}.track{height:100%;display:flex;transform:translateX(-750px);transition:transform .28s ease}.track img{width:750px;height:727px;flex:0 0 750px;object-fit:cover;user-select:none;-webkit-user-drag:none}#next{position:absolute;left:35px;bottom:72px;width:680px;height:132px;border:0;border-radius:66px;background:#59dbe9;color:#062d35;font:36px "PingFang SC","Microsoft YaHei",sans-serif}@media(max-width:750px){.screen{transform:scale(calc(100vw / 750));transform-origin:top center;margin-bottom:calc(-1626px + 100vw * 1626 / 750)}}
+/* 选择红包封面 — CSS 原生响应式（无 750px 固定画板） */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #092a31;
+}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: #fff;
+}
+
+/* 手机外框 */
+.phone {
+  position: relative;
+  width: min(100vw, 430px);
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f8d4d2 0%, #fff 30%);
+}
+
+/* 顶部状态栏 */
+.topbar {
+  padding: max(20px, env(safe-area-inset-top)) 24px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #050c10;
+  font-size: 14px;
+}
+
+.topbar .back {
+  font: 40px/24px Arial;
+  color: #092a31;
+  text-decoration: none;
+}
+
+.topbar .time { font-weight: 800; font-size: 17px; margin-left: -8px; }
+.topbar .brand { font-size: 13px; font-weight: 800; margin-left: auto; }
+.topbar .signal { font-style: normal; font-size: 12px; font-weight: 800; }
+
+/* 标题 */
+.page-title {
+  margin: 0;
+  padding: 16px 0;
+  text-align: center;
+  font-size: 32px;
+  letter-spacing: 3px;
+  font-weight: 800;
+}
+
+/* 封面轮播 */
+.carousel {
+  flex: 1;
+  overflow: hidden;
+  touch-action: pan-y;
+  min-height: 0;
+}
+
+.track {
+  height: 100%;
+  display: flex;
+  transition: transform .28s ease;
+}
+
+.track img {
+  width: 100%;
+  flex: 0 0 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: pointer;
+}
+
+/* 封面提示文字 */
+.cover-note {
+  margin: 0;
+  padding: 12px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #4a656a;
+}
+
+/* 下一步按钮 */
+.next-btn {
+  margin: 0 20px max(28px, env(safe-area-inset-bottom));
+  height: 64px;
+  border: 0;
+  border-radius: 32px;
+  background: #59dbe9;
+  color: #062d35;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* 响应式：大屏手机外壳 */
+@media (min-width: 431px) {
+  .phone {
+    min-height: 820px;
+    max-height: 932px;
+    border-radius: 38px;
+    box-shadow: 0 24px 70px rgba(19, 41, 45, .26);
+  }
+}
+
+/* 响应式：小屏压缩 */
+@media (max-height: 820px) {
+  .page-title { font-size: 28px; padding: 10px 0; }
+  .next-btn { height: 56px; font-size: 18px; }
+  .cover-note { font-size: 14px; padding: 8px 0; }
+}

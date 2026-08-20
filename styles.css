@@ -1,12 +1,223 @@
-:root { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; color:#0d2932; background:#eaf0f0; }
-* { box-sizing:border-box; }
-body { margin:0; min-height:100vh; display:grid; place-items:start center; background:#eaf0f0; }
-.artboard { position:relative; isolation:isolate; width:750px; height:1626px; overflow:hidden; background:linear-gradient(#f3cccc 0 21%,#faeeee 26%,#eff4f4 64%,#eaf0f0 100%); transform-origin:top center; }
-.status { position:absolute; top:28px; left:82px; width:586px; height:52px; display:flex; justify-content:space-between; align-items:center; color:#050c10; font-size:26px; z-index:4; }.status strong{font-size:34px}.brand{font-weight:800;font-size:20px}.signal{font-size:18px;font-weight:800}
-nav { position:absolute; top:116px; left:43px; right:38px; display:flex; justify-content:space-between; align-items:center; z-index:4; }.back{font:80px/45px Arial}.nav-right{font:800 32px/1 Arial;letter-spacing:10px}
-.title { position:absolute; top:214px; width:100%; text-align:center; z-index:3; }.title h1{margin:0;font-size:54px;line-height:1.16;letter-spacing:5px}.title p{margin:21px 0 0;color:#655e60;font-size:24px;letter-spacing:1px}
-.pattern { position:absolute; top:374px; left:0; width:100%; height:617px; opacity:.55; background-color:#faeeee; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='105' viewBox='0 0 105 105'%3E%3Ccircle cx='52.5' cy='52.5' r='51.5' fill='%23efd2d2'/%3E%3Cpath d='M52.5 17 61 43 88 52.5 61 62 52.5 88 43 62 17 52.5 43 43Z' fill='%23fff8f7'/%3E%3C/svg%3E"); background-size:105px 105px; z-index:0; }
-.hero { position:absolute; z-index:2; left:53px; top:412px; width:643px; height:auto; }
-.shadow { position:absolute; left:183px; top:1055px; z-index:1; width:385px; height:34px; border-radius:50%; background:rgba(79,93,94,.13); filter:blur(20px); }
-.actions { position:absolute; top:1150px; left:35px; width:680px; display:grid; gap:20px; z-index:4; }.card{height:152px;width:680px;border:0;border-radius:32px;background:#fff;display:flex;align-items:center;text-align:left;padding:0 43px;gap:28px;color:#0d2932}.card img{width:auto;height:89px;object-fit:contain}.card strong{font-size:31px}.card i{margin-left:auto;font:52px/1 Arial;color:#799092;font-style:normal;font-weight:300}
-@media (max-width:750px) { .artboard{transform:scale(calc(100vw / 750)); margin-bottom:calc(-1626px + 100vw * 1626 / 750);} }
+/* ========================================
+   红包心意 — CSS 原生响应式版（无 scale 缩放）
+   设计思路：直接为手机屏幕布局，不使用 750px 固定画板
+   ======================================== */
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #0d2932;
+  background: #eaf0f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 20%, #f7e6e6 0, #dbe4e5 66%);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ========== 手机外框（Grid 布局，自适应屏幕） ========== */
+.phone {
+  position: relative;
+  width: min(100vw, 430px);
+  min-height: 100svh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  background: linear-gradient(180deg, #f3cccc 0%, #faeeee 26%, #eff4f4 64%, #eaf0f0 100%);
+}
+
+/* ========== 第1行：状态栏 + 导航 ========== */
+.topbar {
+  padding: max(20px, env(safe-area-inset-top)) 24px 0;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #050c10;
+  font-size: 14px;
+}
+
+.status strong {
+  font-size: 17px;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.signal {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.nav {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back {
+  font: 40px/24px Arial;
+  color: #0d2932;
+}
+
+.nav-right {
+  font: 800 18px/1 Arial;
+  letter-spacing: 8px;
+  color: #0d2932;
+}
+
+/* ========== 第2行：标题 ========== */
+.intro {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: .04em;
+  font-weight: 800;
+}
+
+.intro p {
+  margin: 14px 0 0;
+  color: #655e60;
+  font-size: 16px;
+  letter-spacing: .035em;
+}
+
+/* ========== 第3行：Hero 插图区 ========== */
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 0;
+}
+
+.pattern {
+  position: absolute;
+  inset: 5px 0 70px;
+  opacity: .55;
+  background-color: #faeeee;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Ccircle cx='45' cy='45' r='44' fill='%23efd2d2'/%3E%3Cpath d='M45 12 53 36 78 45 53 54 45 78 37 54 12 45 37 36Z' fill='%23fff8f7'/%3E%3C/svg%3E");
+  background-size: 90px 90px;
+}
+
+.hero-img {
+  position: relative;
+  width: 84%;
+  max-width: 360px;
+  margin-top: 20px;
+  z-index: 1;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 15px rgba(118, 88, 71, .16));
+}
+
+.hero-shadow {
+  position: absolute;
+  z-index: 0;
+  bottom: 20px;
+  width: 50%;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(79, 93, 94, .13);
+  filter: blur(20px);
+}
+
+/* ========== 第4行：按钮区 ========== */
+.actions {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 16px;
+  padding: 0 20px max(28px, env(safe-area-inset-bottom));
+  margin: 0;
+  align-content: start;
+}
+
+.card {
+  min-height: 100px;
+  border: 0;
+  border-radius: 28px;
+  background: #fff;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: #0d2932;
+  text-align: left;
+  box-shadow: 0 7px 19px rgba(21, 61, 67, .03);
+}
+
+.card img {
+  width: auto;
+  height: 56px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.card strong {
+  font-size: 24px;
+  font-weight: 750;
+}
+
+.card i {
+  margin-left: auto;
+  font: 42px/1 Arial;
+  color: #799092;
+  font-style: normal;
+  font-weight: 300;
+}
+
+/* ========== 响应式：大屏（>=431px）模拟手机外壳 ========== */
+@media (min-width: 431px) {
+  .phone {
+    min-height: 820px;
+    max-height: 932px;
+    border-radius: 38px;
+    box-shadow: 0 24px 70px rgba(19, 41, 45, .26);
+  }
+}
+
+/* ========== 响应式：小屏高度（<=820px）压缩间距 ========== */
+@media (max-height: 820px) {
+  .intro {
+    padding-top: 16px;
+  }
+
+  .intro h1 {
+    font-size: 34px;
+  }
+
+  .card {
+    min-height: 88px;
+    font-size: 22px;
+  }
+
+  .card img {
+    height: 50px;
+  }
+
+  .actions {
+    gap: 12px;
+    padding-bottom: 18px;
+  }
+}
